@@ -1,1 +1,3 @@
-/node_modules/jasmine-core
+# dependencies
+/node_modules
+/jasmine-core
