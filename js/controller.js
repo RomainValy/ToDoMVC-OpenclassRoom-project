@@ -1,7 +1,5 @@
 (function (window) {
 	'use strict';
-	// NOTE: voir pour modifier le nommage des fonctions et evenements associés
-	// exemple: itemRemove = removeItem
 	/**
 	 * Takes a model and view and acts as the controller between them
 	 *

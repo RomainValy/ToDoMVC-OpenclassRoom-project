@@ -12,6 +12,10 @@
 		'`': '&#x60;'
 	};
 
+	/**
+	 * 
+	 * @param {Array} chr get the escape Html character
+	 */
 	var escapeHtmlChar = function (chr) {
 		return htmlEscapes[chr];
 	};
@@ -29,6 +33,7 @@
 	 * Sets up defaults for all the Template methods such as a default template
 	 *
 	 * @constructor
+	 * @param {String} defaultTemplate push a default template of a TODO on the DOM
 	 */
 	function Template() {
 		this.defaultTemplate
@@ -109,7 +114,9 @@
 		}
 	};
 
-	// Export to window
+	/**
+	 * Export to window
+	 */
 	window.app = window.app || {};
 	window.app.Template = Template;
 })(window);
