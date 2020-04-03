@@ -1,3 +1,4 @@
+
 /*jshint laxbreak:true */
 (function (window) {
 	'use strict';
@@ -46,7 +47,7 @@
 	 * NOTE: In real life you should be using a templating engine such as Mustache
 	 * or Handlebars, however, this is a vanilla JS example.
 	 *
-	 * @param {object} data The object containing keys you want to find in the
+	 * @param {Object} data The object containing keys you want to find in the
 	 *                      template to replace.
 	 * @returns {string} HTML String of an <li> element
 	 *

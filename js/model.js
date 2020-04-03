@@ -5,7 +5,7 @@
 	 * Creates a new Model instance and hooks up the storage.
 	 *
 	 * @constructor
-	 * @param {object} storage A reference to the client side storage class
+	 * @param {Object} storage A reference to the client side storage class
 	 */
 	function Model(storage) {
 		this.storage = storage;
@@ -64,7 +64,7 @@
 	 * the update is complete.
 	 *
 	 * @param {number} id The id of the model to update
-	 * @param {object} data The properties to update and their new value
+	 * @param {Object} data The properties to update and their new value
 	 * @param {function} callback The callback to fire when the update is complete.
 	 */
 	Model.prototype.update = function (id, data, callback) {

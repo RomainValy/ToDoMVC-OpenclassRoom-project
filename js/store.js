@@ -1,8 +1,6 @@
-/**
- * /*jshint eqeqeq:false
- *
- * @format
- */
+
+ // jshint eqeqeq:false
+ 
 
 (function(window) {
   "use strict";
@@ -34,7 +32,7 @@
   /**
    * Finds items based on a query given as a JS object
    *
-   * @param {object} query The query to match against (i.e. {foo: 'bar'})
+   * @param {Object} query The query to match against (i.e. {foo: 'bar'})
    * @param {function} callback	 The callback to fire when the query has
    * completed running
    *
@@ -78,7 +76,7 @@
    * Will save the given data to the DB. If no item exists it will create a new
    * item, otherwise it'll simply update an existing item's properties
    *
-   * @param {object} updateData The data to save back into the DB
+   * @param {Object} updateData The data to save back into the DB
    * @param {function} callback The callback to fire after saving
    * @param {number} id An optional param to enter an ID of an item to update
    */

@@ -6,8 +6,8 @@
 	 * Takes a model and view and acts as the controller between them
 	 *
 	 * @constructor
-	 * @param {object} model The model instance
-	 * @param {object} view The view instance
+	 * @param {Object} model The model instance
+	 * @param {Object} view The view instance
 	 */
 	function Controller(model, view) {
 		var self = this;
@@ -50,7 +50,7 @@
 	/**
 	 * Loads and initialises the view
 	 *
-	 * @param {string} '' | 'active' | 'completed'
+	 * @param {string} locationHash '' | 'active' | 'completed'
 	 */
 	Controller.prototype.setView = function (locationHash) {
         
@@ -190,7 +190,7 @@
 	 * in storage based on the checkbox's state.
 	 *
 	 * @param {number} id The ID of the element to complete or uncomplete
-	 * @param {object} checkbox The checkbox to check the state of complete
+	 * @param {Object} completed => reference to the checkbox. The checkbox to check the state of complete
 	 *                          or not
 	 * @param {boolean|undefined} silent Prevent re-filtering the todo items
 	 */
