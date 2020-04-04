@@ -4,10 +4,11 @@
 
 	/**
 	 * Sets up a brand new Todo list.
-	 *
+	 * @constructor
 	 * @param {string} name The name of your new to do list.
 	 */
 	function Todo(name) {
+		/**@constructor */
 		this.storage = new app.Store(name);
 		this.model = new app.Model(this.storage);
 		this.template = new app.Template();

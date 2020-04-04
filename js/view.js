@@ -1,10 +1,8 @@
 /**
- * /*global qs, qsa, $on, $parent, $delegate
- *
- * @format
+ * global qs, qsa, $on, $parent, $delegate
  */
 
-(function(window) {
+(function (window) {
   "use strict";
 
   /**
@@ -25,17 +23,23 @@
    * 				<button class="destroy"></button>
    * 			</div>
    * 		</li>"
-   * @param {Number} ENTER_KEY keyboard for validate new TODO
-   * @param {Number} ESCAPE_KEY keyboard for escape
-   * @param {Array} $todoList select all the items with the "todo-list" class
-   * @param {Array} $todoItemCounter select all the items with the "todo-count" class
-   * @param {Array} $clearCompleted select all the items with the "clear-completed" class
-   * @param {Array} $main select all the items with the "main" class
-   * @param {Array} $footer select all the items with the "footer" class
-   * @param {Array} $toggleAll select all the items with the "toggle-all" class
-   * @param {Array} $newTodo select all the items with the "new-todo" class
+   *
    */
   function View(template) {
+    /**
+     * @constructor
+     * @param {number} ENTER_KEY keyboard for validate new TODO
+     * @param {number} ESCAPE_KEY keyboard for escape
+     * @param {Array} $todoList select all the items with the "todo-list" class
+     * @param {Array} $todoList select all the items with the "todo-list" class
+     * @param {Array} $todoList select all the items with the "todo-list" class
+     * @param {Array} $todoItemCounter select all the items with the "todo-count" class
+     * @param {Array} $clearCompleted select all the items with the "clear-completed" class
+     * @param {Array} $main select all the items with the "main" class
+     * @param {Array} $footer select all the items with the "footer" class
+     * @param {Array} $toggleAll select all the items with the "toggle-all" class
+     * @param {Array} $newTodo select all the items with the "new-todo" class
+     */
     this.template = template;
 
     this.ENTER_KEY = 13;
@@ -53,9 +57,9 @@
   /**
    * select a TODO with his id and remove it from the DOM
    *
-   * @param {String} id id off the element targeted withe this remove event
+   * @param {string} id id off the element targeted withe this remove event
    */
-  View.prototype._removeItem = function(id) {
+  View.prototype._removeItem = function (id) {
     var elem = qs('[data-id="' + id + '"]');
 
     if (elem) {
@@ -64,11 +68,11 @@
   };
 
   /**
-   * make visible the
-   * @param {Object} completedCount
-   * @param {Boolean} visible apply display style "visible" or "block" 
+   *
+   * @param {number} completedCount number of items how are completed
+   * @param {boolean} visible apply display style "visible" or "block"
    */
-  View.prototype._clearCompletedButton = function(completedCount, visible) {
+  View.prototype._clearCompletedButton = function (completedCount, visible) {
     this.$clearCompleted.innerHTML = this.template.clearCompletedButton(
       completedCount
     );
@@ -76,14 +80,18 @@
   };
 
   /**
-   * @param {String} currentPage 
+   * @param {string} currentPage 'all' | 'active' | 'completed'
    */
-  View.prototype._setFilter = function(currentPage) {
+  View.prototype._setFilter = function (currentPage) {
     qs(".filters .selected").className = "";
     qs('.filters [href="#/' + currentPage + '"]').className = "selected";
   };
 
-  View.prototype._elementComplete = function(id, completed) {
+  /**
+   * @param {string} id the id of TODO item targeted
+   * @param {boolean} completed
+   */
+  View.prototype._elementComplete = function (id, completed) {
     var listItem = qs('[data-id="' + id + '"]');
 
     if (!listItem) {
@@ -92,11 +100,19 @@
 
     listItem.className = completed ? "completed" : "";
 
-    // In case it was toggled from an event and not by clicking the checkbox
+    /**
+     * In case it was toggled from an event and not by clicking the checkbox
+     */
     qs("input", listItem).checked = completed;
   };
 
-  View.prototype._editItem = function(id, title) {
+  /**
+   * Can change a value of a todo in the list
+   *
+   * @param {string} id
+   * @param {string} title text in the TODO
+   */
+  View.prototype._editItem = function (id, title) {
     var listItem = qs('[data-id="' + id + '"]');
 
     if (!listItem) {
@@ -113,7 +129,13 @@
     input.value = title;
   };
 
-  View.prototype._editItemDone = function(id, title) {
+  /**
+   * Validate the itm modify with View.prototype._editItem
+   *
+   * @param {string} id
+   * @param {string} title text in the TODO
+   */
+  View.prototype._editItemDone = function (id, title) {
     var listItem = qs('[data-id="' + id + '"]');
 
     if (!listItem) {
@@ -121,86 +143,94 @@
     }
 
     var input = qs("input.edit", listItem);
+
     listItem.removeChild(input);
 
     listItem.className = listItem.className.replace("editing", "");
 
-    qsa("label", listItem).forEach(function(label) {
+    qsa("label", listItem).forEach(function (label) {
       label.textContent = title;
     });
   };
 
-  View.prototype.render = function(viewCmd, parameter) {
+  /**
+   * centralise all the method of the View class
+   * @param {Function} viewCmd parameter for apply the select method
+   */
+  View.prototype.render = function (viewCmd, parameter) {
+    /**@constructor */
     var self = this;
     var viewCommands = {
-      showEntries: function() {
+      showEntries: function () {
         self.$todoList.innerHTML = self.template.show(parameter);
       },
-      removeItem: function() {
+      removeItem: function () {
         self._removeItem(parameter);
       },
-      updateElementCount: function() {
+      updateElementCount: function () {
         self.$todoItemCounter.innerHTML = self.template.itemCounter(parameter);
       },
-      clearCompletedButton: function() {
+      clearCompletedButton: function () {
         self._clearCompletedButton(parameter.completed, parameter.visible);
       },
-      contentBlockVisibility: function() {
+      contentBlockVisibility: function () {
         self.$main.style.display = self.$footer.style.display = parameter.visible
           ? "block"
           : "none";
       },
-      toggleAll: function() {
+      toggleAll: function () {
         self.$toggleAll.checked = parameter.checked;
       },
-      setFilter: function() {
+      setFilter: function () {
         self._setFilter(parameter);
       },
-      clearNewTodo: function() {
+      clearNewTodo: function () {
         self.$newTodo.value = "";
       },
-      elementComplete: function() {
+      elementComplete: function () {
         self._elementComplete(parameter.id, parameter.completed);
       },
-      editItem: function() {
+      editItem: function () {
         self._editItem(parameter.id, parameter.title);
       },
-      editItemDone: function() {
+      editItemDone: function () {
         self._editItemDone(parameter.id, parameter.title);
-      }
+      },
     };
 
     viewCommands[viewCmd]();
   };
 
-  View.prototype._itemId = function(element) {
+  View.prototype._itemId = function (element) {
     var li = $parent(element, "li");
     return parseInt(li.dataset.id, 10);
   };
 
-  View.prototype._bindItemEditDone = function(handler) {
+  View.prototype._bindItemEditDone = function (handler) {
     var self = this;
-    $delegate(self.$todoList, "li .edit", "blur", function() {
+    $delegate(self.$todoList, "li .edit", "blur", function () {
       if (!this.dataset.iscanceled) {
         handler({
           id: self._itemId(this),
-          title: this.value
+          title: this.value,
         });
       }
     });
 
-    $delegate(self.$todoList, "li .edit", "keypress", function(event) {
+    $delegate(self.$todoList, "li .edit", "keypress", function (event) {
       if (event.keyCode === self.ENTER_KEY) {
-        // Remove the cursor from the input when you hit enter just like if it
-        // were a real form
+        /**
+         * Remove the cursor from the input when you hit enter just like if it
+         * were a real form
+         */
         this.blur();
       }
     });
   };
 
-  View.prototype._bindItemEditCancel = function(handler) {
+  View.prototype._bindItemEditCancel = function (handler) {
     var self = this;
-    $delegate(self.$todoList, "li .edit", "keyup", function(event) {
+    $delegate(self.$todoList, "li .edit", "keyup", function (event) {
       if (event.keyCode === self.ESCAPE_KEY) {
         this.dataset.iscanceled = true;
         this.blur();
@@ -210,33 +240,36 @@
     });
   };
 
-  View.prototype.bind = function(event, handler) {
+  /**
+   * manage the context (bind() methode)
+   */
+  View.prototype.bind = function (event, handler) {
     var self = this;
     if (event === "newTodo") {
-      $on(self.$newTodo, "change", function() {
+      $on(self.$newTodo, "change", function () {
         handler(self.$newTodo.value);
       });
     } else if (event === "removeCompleted") {
-      $on(self.$clearCompleted, "click", function() {
+      $on(self.$clearCompleted, "click", function () {
         handler();
       });
     } else if (event === "toggleAll") {
-      $on(self.$toggleAll, "click", function() {
+      $on(self.$toggleAll, "click", function () {
         handler({ completed: this.checked });
       });
     } else if (event === "itemEdit") {
-      $delegate(self.$todoList, "li label", "dblclick", function() {
+      $delegate(self.$todoList, "li label", "dblclick", function () {
         handler({ id: self._itemId(this) });
       });
     } else if (event === "itemRemove") {
-      $delegate(self.$todoList, ".destroy", "click", function() {
+      $delegate(self.$todoList, ".destroy", "click", function () {
         handler({ id: self._itemId(this) });
       });
     } else if (event === "itemToggle") {
-      $delegate(self.$todoList, ".toggle", "click", function() {
+      $delegate(self.$todoList, ".toggle", "click", function () {
         handler({
           id: self._itemId(this),
-          completed: this.checked
+          completed: this.checked,
         });
       });
     } else if (event === "itemEditDone") {

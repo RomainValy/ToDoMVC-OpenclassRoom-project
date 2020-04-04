@@ -170,9 +170,9 @@ describe('controller', function () {
 			
 		setUpModel([]);
 
-			subject.setView('');
+		subject.setView('');
 
-			expect(view.render).toHaveBeenCalledWith('setFilter', '');
+		expect(view.render).toHaveBeenCalledWith('setFilter', '');
 		// TODO: write test
 	});
 

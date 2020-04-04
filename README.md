@@ -2,65 +2,93 @@
 
 -   [Todo][1]
     -   [Parameters][2]
--   [Controller][3]
-    -   [Parameters][4]
-    -   [setView][5]
-        -   [Parameters][6]
-    -   [showAll][7]
-    -   [showActive][8]
-    -   [showCompleted][9]
-    -   [addItem][10]
-        -   [Parameters][11]
-    -   [removeItem][12]
-        -   [Parameters][13]
-    -   [removeCompletedItems][14]
-    -   [toggleComplete][15]
-        -   [Parameters][16]
-    -   [toggleAll][17]
-        -   [Parameters][18]
-    -   [\_updateCount][19]
-    -   [\_filter][20]
-        -   [Parameters][21]
-    -   [\_updateFilterState][22]
-        -   [Parameters][23]
--   [Model][24]
-    -   [Parameters][25]
-    -   [create][26]
-        -   [Parameters][27]
-    -   [read][28]
-        -   [Parameters][29]
-        -   [Examples][30]
-    -   [update][31]
-        -   [Parameters][32]
-    -   [remove][33]
-        -   [Parameters][34]
-    -   [removeAll][35]
-        -   [Parameters][36]
-    -   [getCount][37]
-        -   [Parameters][38]
--   [Store][39]
-    -   [Parameters][40]
-    -   [find][41]
-        -   [Parameters][42]
-        -   [Examples][43]
-    -   [findAll][44]
-        -   [Parameters][45]
-    -   [save][46]
-        -   [Parameters][47]
-    -   [remove][48]
-        -   [Parameters][49]
-    -   [drop][50]
-        -   [Parameters][51]
--   [Template][52]
-    -   [show][53]
-        -   [Parameters][54]
-        -   [Examples][55]
-    -   [itemCounter][56]
+    -   [storage][3]
+-   [Controller][4]
+    -   [Parameters][5]
+    -   [setView][6]
+        -   [Parameters][7]
+    -   [showAll][8]
+    -   [showActive][9]
+    -   [showCompleted][10]
+    -   [addItem][11]
+        -   [Parameters][12]
+    -   [removeItem][13]
+        -   [Parameters][14]
+    -   [removeCompletedItems][15]
+    -   [toggleComplete][16]
+        -   [Parameters][17]
+    -   [toggleAll][18]
+        -   [Parameters][19]
+    -   [\_updateCount][20]
+    -   [\_filter][21]
+        -   [Parameters][22]
+    -   [\_updateFilterState][23]
+        -   [Parameters][24]
+-   [Model][25]
+    -   [Parameters][26]
+    -   [create][27]
+        -   [Parameters][28]
+    -   [read][29]
+        -   [Parameters][30]
+        -   [Examples][31]
+    -   [update][32]
+        -   [Parameters][33]
+    -   [remove][34]
+        -   [Parameters][35]
+    -   [removeAll][36]
+        -   [Parameters][37]
+    -   [getCount][38]
+        -   [Parameters][39]
+-   [Store][40]
+    -   [Parameters][41]
+    -   [find][42]
+        -   [Parameters][43]
+        -   [Examples][44]
+    -   [findAll][45]
+        -   [Parameters][46]
+    -   [save][47]
+        -   [Parameters][48]
+    -   [remove][49]
+        -   [Parameters][50]
+    -   [drop][51]
+        -   [Parameters][52]
+-   [escapeHtmlChar][53]
+    -   [Parameters][54]
+-   [Template][55]
+    -   [defaultTemplate][56]
         -   [Parameters][57]
-    -   [clearCompletedButton][58]
+    -   [show][58]
         -   [Parameters][59]
--   [View][60]
-    -   [Parameters][61]
+        -   [Examples][60]
+    -   [itemCounter][61]
+        -   [Parameters][62]
+    -   [clearCompletedButton][63]
+        -   [Parameters][64]
+-   [window][65]
+    -   [app][66]
+-   [View][67]
+    -   [Parameters][68]
+    -   [template][69]
+        -   [Parameters][70]
+    -   [\_removeItem][71]
+        -   [Parameters][72]
+    -   [\_clearCompletedButton][73]
+        -   [Parameters][74]
+    -   [\_setFilter][75]
+        -   [Parameters][76]
+    -   [\_elementComplete][77]
+        -   [Parameters][78]
+    -   [\_editItem][79]
+        -   [Parameters][80]
+    -   [\_editItemDone][81]
+        -   [Parameters][82]
+    -   [render][83]
+        -   [Parameters][84]
+    -   [bind][85]
+        -   [Parameters][86]
+-   [checked][87]
+-   [self][88]
+-   [blur][89]
 
 ## Todo
 
@@ -68,7 +96,9 @@ Sets up a brand new Todo list.
 
 ### Parameters
 
--   `name` **[string][62]** The name of your new to do list.
+-   `name` **[string][90]** The name of your new to do list.
+
+### storage
 
 ## Controller
 
@@ -76,8 +106,8 @@ Takes a model and view and acts as the controller between them
 
 ### Parameters
 
--   `model` **[Object][63]** The model instance
--   `view` **[Object][63]** The view instance
+-   `model` **[Object][91]** The model instance
+-   `view` **[Object][91]** The view instance
 
 ### setView
 
@@ -85,7 +115,7 @@ Loads and initialises the view
 
 #### Parameters
 
--   `locationHash` **[string][62]** '' | 'active' | 'completed'
+-   `locationHash` **[string][90]** '' | 'active' | 'completed'
 
 ### showAll
 
@@ -116,7 +146,7 @@ remove it from the DOM and also remove it from storage.
 
 #### Parameters
 
--   `id` **[number][64]** The ID of the item to remove from the DOM and
+-   `id` **[number][92]** The ID of the item to remove from the DOM and
     storage
 
 ### removeCompletedItems
@@ -130,10 +160,10 @@ in storage based on the checkbox's state.
 
 #### Parameters
 
--   `id` **[number][64]** The ID of the element to complete or uncomplete
--   `completed` **[Object][63]** => reference to the checkbox. The checkbox to check the state of complete
+-   `id` **[number][92]** The ID of the element to complete or uncomplete
+-   `completed` **[Object][91]** => reference to the checkbox. The checkbox to check the state of complete
                              or not
--   `silent` **([boolean][65] \| [undefined][66])** Prevent re-filtering the todo items
+-   `silent` **([boolean][93] \| [undefined][94])** Prevent re-filtering the todo items
 
 ### toggleAll
 
@@ -155,7 +185,7 @@ Re-filters the todo items, based on the active route.
 
 #### Parameters
 
--   `force` **([boolean][65] \| [undefined][66])** forces a re-painting of todo items.
+-   `force` **([boolean][93] \| [undefined][94])** forces a re-painting of todo items.
 
 ### \_updateFilterState
 
@@ -171,7 +201,7 @@ Creates a new Model instance and hooks up the storage.
 
 ### Parameters
 
--   `storage` **[Object][63]** A reference to the client side storage class
+-   `storage` **[Object][91]** A reference to the client side storage class
 
 ### create
 
@@ -179,8 +209,8 @@ Creates a new todo model
 
 #### Parameters
 
--   `title` **[string][62]?** The title of the task
--   `callback` **[function][67]?** The callback to fire after the model is created
+-   `title` **[string][90]?** The title of the task
+-   `callback` **[function][95]?** The callback to fire after the model is created
 
 ### read
 
@@ -191,8 +221,8 @@ against.
 
 #### Parameters
 
--   `query` **([string][62] \| [number][64] \| [object][63])?** A query to match models against
--   `callback` **[function][67]?** The callback to fire after the model is found
+-   `query` **([string][90] \| [number][92] \| [object][91])?** A query to match models against
+-   `callback` **[function][95]?** The callback to fire after the model is found
 
 #### Examples
 
@@ -210,9 +240,9 @@ the update is complete.
 
 #### Parameters
 
--   `id` **[number][64]** The id of the model to update
--   `data` **[Object][63]** The properties to update and their new value
--   `callback` **[function][67]** The callback to fire when the update is complete.
+-   `id` **[number][92]** The id of the model to update
+-   `data` **[Object][91]** The properties to update and their new value
+-   `callback` **[function][95]** The callback to fire when the update is complete.
 
 ### remove
 
@@ -220,8 +250,8 @@ Removes a model from storage
 
 #### Parameters
 
--   `id` **[number][64]** The ID of the model to remove
--   `callback` **[function][67]** The callback to fire when the removal is complete.
+-   `id` **[number][92]** The ID of the model to remove
+-   `callback` **[function][95]** The callback to fire when the removal is complete.
 
 ### removeAll
 
@@ -229,7 +259,7 @@ WARNING: Will remove ALL data from storage.
 
 #### Parameters
 
--   `callback` **[function][67]** The callback to fire when the storage is wiped.
+-   `callback` **[function][95]** The callback to fire when the storage is wiped.
 
 ### getCount
 
@@ -246,8 +276,8 @@ collection if no collection already exists.
 
 ### Parameters
 
--   `name` **[string][62]** The name of our DB we want to use
--   `callback` **[function][67]** Our fake DB uses callbacks because in
+-   `name` **[string][90]** The name of our DB we want to use
+-   `callback` **[function][95]** Our fake DB uses callbacks because in
     real life you probably would be making AJAX calls
 
 ### find
@@ -256,8 +286,8 @@ Finds items based on a query given as a JS object
 
 #### Parameters
 
--   `query` **[Object][63]** The query to match against (i.e. {foo: 'bar'})
--   `callback` **[function][67]** The callback to fire when the query has
+-   `query` **[Object][91]** The query to match against (i.e. {foo: 'bar'})
+-   `callback` **[function][95]** The callback to fire when the query has
     completed running
 
 #### Examples
@@ -275,7 +305,7 @@ Will retrieve all data from the collection
 
 #### Parameters
 
--   `callback` **[function][67]** The callback to fire upon retrieving data
+-   `callback` **[function][95]** The callback to fire upon retrieving data
 
 ### save
 
@@ -284,9 +314,9 @@ item, otherwise it'll simply update an existing item's properties
 
 #### Parameters
 
--   `updateData` **[Object][63]** The data to save back into the DB
--   `callback` **[function][67]** The callback to fire after saving
--   `id` **[number][64]** An optional param to enter an ID of an item to update
+-   `updateData` **[Object][91]** The data to save back into the DB
+-   `callback` **[function][95]** The callback to fire after saving
+-   `id` **[number][92]** An optional param to enter an ID of an item to update
 
 ### remove
 
@@ -294,8 +324,8 @@ Will remove an item from the Store based on its ID
 
 #### Parameters
 
--   `id` **[number][64]** The ID of the item you want to remove
--   `callback` **[function][67]** The callback to fire after saving
+-   `id` **[number][92]** The ID of the item you want to remove
+-   `callback` **[function][95]** The callback to fire after saving
 
 ### drop
 
@@ -303,11 +333,23 @@ Will drop all storage and start fresh
 
 #### Parameters
 
--   `callback` **[function][67]** The callback to fire after dropping the data
+-   `callback` **[function][95]** The callback to fire after dropping the data
+
+## escapeHtmlChar
+
+### Parameters
+
+-   `chr` **[Array][96]** get the escape Html character
 
 ## Template
 
 Sets up defaults for all the Template methods such as a default template
+
+### defaultTemplate
+
+#### Parameters
+
+-   `defaultTemplate` **[string][90]** push a default template of a TODO on the DOM
 
 ### show
 
@@ -318,7 +360,7 @@ or Handlebars, however, this is a vanilla JS example.
 
 #### Parameters
 
--   `data` **[Object][63]** The object containing keys you want to find in the
+-   `data` **[Object][91]** The object containing keys you want to find in the
                          template to replace.
 
 #### Examples
@@ -331,7 +373,7 @@ completed: 0,
 });
 ```
 
-Returns **[string][62]** HTML String of an <li> element
+Returns **[string][90]** HTML String of an <li> element
 
 ### itemCounter
 
@@ -339,9 +381,9 @@ Displays a counter of how many to dos are left to complete
 
 #### Parameters
 
--   `activeTodos` **[number][64]** The number of active todos.
+-   `activeTodos` **[number][92]** The number of active todos.
 
-Returns **[string][62]** String containing the count
+Returns **[string][90]** String containing the count
 
 ### clearCompletedButton
 
@@ -351,9 +393,19 @@ Updates the text within the "Clear completed" button
 
 -   `completedTodos` **\[type]** The number of completed todos.
 
-Returns **[string][62]** String containing the count
+Returns **[string][90]** String containing the count
+
+## window
+
+global qs, qsa, $on, $parent, $delegate
+
+### app
+
+Export to window
 
 ## View
+
+**Extends Template**
 
 View that abstracts away the browser's DOM completely.
 It has two simple entry points:
@@ -365,138 +417,293 @@ It has two simple entry points:
 
 ### Parameters
 
--   `template`
+-   `template` **[Object][91]** herited of Template.defaultTemplate
+     => "       <li data-id="{{id}}" class="{{completed}}">             <div class="view">
+                                <input class="toggle" type="checkbox" {{checked}}>
+                                <label>{{title}}</label>
+                                <button class="destroy"></button>
+                        </div>
+                </li>"
+
+### template
+
+#### Parameters
+
+-   `ENTER_KEY` **[number][92]** keyboard for validate new TODO
+-   `ESCAPE_KEY` **[number][92]** keyboard for escape
+-   `$todoList` **[Array][96]** select all the items with the "todo-list" class
+-   `$todoList` **[Array][96]** select all the items with the "todo-list" class
+-   `$todoList` **[Array][96]** select all the items with the "todo-list" class
+-   `$todoItemCounter` **[Array][96]** select all the items with the "todo-count" class
+-   `$clearCompleted` **[Array][96]** select all the items with the "clear-completed" class
+-   `$main` **[Array][96]** select all the items with the "main" class
+-   `$footer` **[Array][96]** select all the items with the "footer" class
+-   `$toggleAll` **[Array][96]** select all the items with the "toggle-all" class
+-   `$newTodo` **[Array][96]** select all the items with the "new-todo" class
+
+### \_removeItem
+
+select a TODO with his id and remove it from the DOM
+
+#### Parameters
+
+-   `id` **[string][90]** id off the element targeted withe this remove event
+
+### \_clearCompletedButton
+
+#### Parameters
+
+-   `completedCount` **[number][92]** number of items how are completed
+-   `visible` **[boolean][93]** apply display style "visible" or "block"
+
+### \_setFilter
+
+#### Parameters
+
+-   `currentPage` **[string][90]** 'all' | 'active' | 'completed'
+
+### \_elementComplete
+
+#### Parameters
+
+-   `id` **[string][90]** the id of TODO item targeted
+-   `completed` **[boolean][93]**
+
+### \_editItem
+
+Can change a value of a todo in the list
+
+#### Parameters
+
+-   `id` **[string][90]**
+-   `title` **[string][90]** text in the TODO
+
+### \_editItemDone
+
+Validate the itm modify with View.prototype.\_editItem
+
+#### Parameters
+
+-   `id` **[string][90]**
+-   `title` **[string][90]** text in the TODO
+
+### render
+
+centralise all the method of the View class
+
+#### Parameters
+
+-   `viewCmd` **[Function][95]** parameter for apply the select method
+-   `parameter`
+
+### bind
+
+manage the context (bind() methode)
+
+#### Parameters
+
+-   `event`
+-   `handler`
+
+## checked
+
+In case it was toggled from an event and not by clicking the checkbox
+
+## self
+
+## blur
+
+Remove the cursor from the input when you hit enter just like if it
+were a real form
 
 [1]: #todo
 
 [2]: #parameters
 
-[3]: #controller
+[3]: #storage
 
-[4]: #parameters-1
+[4]: #controller
 
-[5]: #setview
+[5]: #parameters-1
 
-[6]: #parameters-2
+[6]: #setview
 
-[7]: #showall
+[7]: #parameters-2
 
-[8]: #showactive
+[8]: #showall
 
-[9]: #showcompleted
+[9]: #showactive
 
-[10]: #additem
+[10]: #showcompleted
 
-[11]: #parameters-3
+[11]: #additem
 
-[12]: #removeitem
+[12]: #parameters-3
 
-[13]: #parameters-4
+[13]: #removeitem
 
-[14]: #removecompleteditems
+[14]: #parameters-4
 
-[15]: #togglecomplete
+[15]: #removecompleteditems
 
-[16]: #parameters-5
+[16]: #togglecomplete
 
-[17]: #toggleall
+[17]: #parameters-5
 
-[18]: #parameters-6
+[18]: #toggleall
 
-[19]: #_updatecount
+[19]: #parameters-6
 
-[20]: #_filter
+[20]: #_updatecount
 
-[21]: #parameters-7
+[21]: #_filter
 
-[22]: #_updatefilterstate
+[22]: #parameters-7
 
-[23]: #parameters-8
+[23]: #_updatefilterstate
 
-[24]: #model
+[24]: #parameters-8
 
-[25]: #parameters-9
+[25]: #model
 
-[26]: #create
+[26]: #parameters-9
 
-[27]: #parameters-10
+[27]: #create
 
-[28]: #read
+[28]: #parameters-10
 
-[29]: #parameters-11
+[29]: #read
 
-[30]: #examples
+[30]: #parameters-11
 
-[31]: #update
+[31]: #examples
 
-[32]: #parameters-12
+[32]: #update
 
-[33]: #remove
+[33]: #parameters-12
 
-[34]: #parameters-13
+[34]: #remove
 
-[35]: #removeall
+[35]: #parameters-13
 
-[36]: #parameters-14
+[36]: #removeall
 
-[37]: #getcount
+[37]: #parameters-14
 
-[38]: #parameters-15
+[38]: #getcount
 
-[39]: #store
+[39]: #parameters-15
 
-[40]: #parameters-16
+[40]: #store
 
-[41]: #find
+[41]: #parameters-16
 
-[42]: #parameters-17
+[42]: #find
 
-[43]: #examples-1
+[43]: #parameters-17
 
-[44]: #findall
+[44]: #examples-1
 
-[45]: #parameters-18
+[45]: #findall
 
-[46]: #save
+[46]: #parameters-18
 
-[47]: #parameters-19
+[47]: #save
 
-[48]: #remove-1
+[48]: #parameters-19
 
-[49]: #parameters-20
+[49]: #remove-1
 
-[50]: #drop
+[50]: #parameters-20
 
-[51]: #parameters-21
+[51]: #drop
 
-[52]: #template
+[52]: #parameters-21
 
-[53]: #show
+[53]: #escapehtmlchar
 
 [54]: #parameters-22
 
-[55]: #examples-2
+[55]: #template
 
-[56]: #itemcounter
+[56]: #defaulttemplate
 
 [57]: #parameters-23
 
-[58]: #clearcompletedbutton
+[58]: #show
 
 [59]: #parameters-24
 
-[60]: #view
+[60]: #examples-2
 
-[61]: #parameters-25
+[61]: #itemcounter
 
-[62]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[62]: #parameters-25
 
-[63]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[63]: #clearcompletedbutton
 
-[64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[64]: #parameters-26
 
-[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[65]: #window
 
-[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[66]: #app
 
-[67]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[67]: #view
+
+[68]: #parameters-27
+
+[69]: #template-1
+
+[70]: #parameters-28
+
+[71]: #_removeitem
+
+[72]: #parameters-29
+
+[73]: #_clearcompletedbutton
+
+[74]: #parameters-30
+
+[75]: #_setfilter
+
+[76]: #parameters-31
+
+[77]: #_elementcomplete
+
+[78]: #parameters-32
+
+[79]: #_edititem
+
+[80]: #parameters-33
+
+[81]: #_edititemdone
+
+[82]: #parameters-34
+
+[83]: #render
+
+[84]: #parameters-35
+
+[85]: #bind
+
+[86]: #parameters-36
+
+[87]: #checked
+
+[88]: #self
+
+[89]: #blur
+
+[90]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[91]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[92]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[93]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[94]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[95]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[96]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

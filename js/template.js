@@ -33,9 +33,12 @@
 	 * Sets up defaults for all the Template methods such as a default template
 	 *
 	 * @constructor
-	 * @param {String} defaultTemplate push a default template of a TODO on the DOM
 	 */
 	function Template() {
+		/**
+		 * @constructor
+		 *  @param {string} defaultTemplate push a default template of a TODO on the DOM
+		 */
 		this.defaultTemplate
 		=	'<li data-id="{{id}}" class="{{completed}}">'
 		+		'<div class="view">'
