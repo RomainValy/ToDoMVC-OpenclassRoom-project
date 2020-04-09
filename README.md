@@ -40,20 +40,7 @@ Chrome, edge, safari and FireFox compatibility.
     -   [storage](#storage)
 -   [todo](#todo-1)
 -   [setView](#setview)
--   [window](#window)
-    -   [app](#app)
-    -   [app](#app-1)
-    -   [qs](#qs)
-        -   [Parameters](#parameters-1)
-    -   [$on](#on)
-        -   [Parameters](#parameters-2)
-    -   [$delegate](#delegate)
-        -   [Parameters](#parameters-3)
-    -   [$parent](#parent)
-        -   [Parameters](#parameters-4)
-        -   [Examples](#examples)
 -   [window](#window-1)
-    -   [app](#app-2)
     -   [app](#app-3)
     -   [qs](#qs-1)
         -   [Parameters](#parameters-5)
@@ -179,68 +166,8 @@ initiate default paramter for rendering the first view
 
 ## window
 
-### app
-
-Export to window
-
-### app
-
-Export to window
-
-### qs
-
-Get element(s) by CSS selector:
-
-#### Parameters
-
--   `selector`  
--   `scope`  
-
-### $on
-
-addEventListener wrapper:
-
-#### Parameters
-
--   `target`  
--   `type`  
--   `callback`  
--   `useCapture`  
-
-### $delegate
-
-Attach a handler to event for all elements that match the selector,
-now or in the future, based on a root element
-
-#### Parameters
-
--   `target`  
--   `selector`  
--   `type`  
--   `handler`  
-
-### $parent
-
-Find the element's parent with the given tag name:
-
-#### Parameters
-
--   `element`  
--   `tagName`  
-
-#### Examples
-
-```javascript
-$parent(qs('a'), 'div');
-```
-
-## window
-
 global qs, qsa, $on, $parent, $delegate
 
-### app
-
-Export to window
 
 ### app
 
