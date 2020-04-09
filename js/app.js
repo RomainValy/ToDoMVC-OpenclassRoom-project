@@ -15,9 +15,14 @@
 		this.view = new app.View(this.template);
 		this.controller = new app.Controller(this.model, this.view);
 	}
-
+    /**
+	 * render a new app
+	 */
 	var todo = new Todo('todos-vanillajs');
-
+/**
+ * initiate default paramter for rendering the first view
+ * @extends Controller.js
+ */
 	function setView() {
 		todo.controller.setView(document.location.hash);
 	}

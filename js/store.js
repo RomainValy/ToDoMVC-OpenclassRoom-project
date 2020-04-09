@@ -86,9 +86,12 @@
 
     callback = callback || function() {};
 
-    // Generate an ID
+    /**Generate an ID
+     * 
+     * @description https://developer.mozilla.org/fr/docs/Web/API/RandomSource/getRandomValues
+    */
     
-    //https://developer.mozilla.org/fr/docs/Web/API/RandomSource/getRandomValues
+    
 
     var array = new Uint32Array(10);
     var randArray = window.crypto.getRandomValues(array);
