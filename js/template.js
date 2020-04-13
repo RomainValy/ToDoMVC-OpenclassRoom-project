@@ -106,7 +106,7 @@
 	/**
 	 * Updates the text within the "Clear completed" button
 	 *
-	 * @param  {[type]} completedTodos The number of completed todos.
+	 * @param  {Number} completedTodos The number of completed todos.
 	 * @returns {string} String containing the count
 	 */
 	Template.prototype.clearCompletedButton = function (completedTodos) {

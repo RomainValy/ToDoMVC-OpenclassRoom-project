@@ -86,19 +86,22 @@
 
     callback = callback || function() {};
 
-    /**Generate an ID
-     * 
-     * @description https://developer.mozilla.org/fr/docs/Web/API/RandomSource/getRandomValues
+    /**
+     * Generate an ID
+     * @method getRandomId
+     * @return {String} a complete random number 
+     * @see https://developer.mozilla.org/fr/docs/Web/API/RandomSource/getRandomValues
     */
-    
-    
-
+    var getRandomId = function(){
     var array = new Uint32Array(10);
     var randArray = window.crypto.getRandomValues(array);
     var reducer = (accumulator, currentValue) => accumulator + currentValue;
-    var newId = randArray.reduce(reducer).toString();
+    return randArray.reduce(reducer).toString();
+    }
+    
+    var newId = getRandomId()
 
-    // If an ID was actually given, find the item and update each property
+    //If an ID was actually given, find the item and update each property
     if (id) {
       for (var i = 0; i < todos.length; i++) {
         if (todos[i].id === id) {
@@ -112,7 +115,7 @@
       localStorage[this._dbName] = JSON.stringify(data);
       callback.call(this, todos);
     } else {
-      // Assign an ID
+      //Assign an ID 
       updateData.id = parseInt(newId);
 
       todos.push(updateData);
@@ -138,7 +141,6 @@
         todos.splice(i, 1);
       }
     }
-    //MODIF - delete a useless loop
 
     localStorage[this._dbName] = JSON.stringify(data);
     callback.call(this, todos);
@@ -155,7 +157,7 @@
     callback.call(this, data.todos);
   };
 
-  // Export to window
+  /**Export to window*/
   window.app = window.app || {};
   window.app.Store = Store;
 })(window);
